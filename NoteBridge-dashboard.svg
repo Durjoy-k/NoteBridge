@@ -1,0 +1,364 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1440" height="1024" viewBox="0 0 1440 1024" role="img" aria-labelledby="title desc">
+  <title id="title">NoteBridge student dashboard</title>
+  <desc id="desc">A high fidelity desktop dashboard for NoteBridge, a university academic knowledge and learning platform.</desc>
+
+  <defs>
+    <linearGradient id="heroGradient" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#2F6BFF"/>
+      <stop offset="100%" stop-color="#1644C8"/>
+    </linearGradient>
+    <linearGradient id="heroGlow" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#83A7FF" stop-opacity="0.42"/>
+      <stop offset="100%" stop-color="#83A7FF" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="progressGradient" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#2F6BFF"/>
+      <stop offset="100%" stop-color="#62A5FF"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="8" stdDeviation="16" flood-color="#183B72" flood-opacity="0.08"/>
+    </filter>
+    <filter id="smallShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="3" stdDeviation="7" flood-color="#183B72" flood-opacity="0.08"/>
+    </filter>
+    <clipPath id="avatarClip"><circle cx="0" cy="0" r="22"/></clipPath>
+    <pattern id="dotPattern" width="18" height="18" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1.5" fill="#FFFFFF" fill-opacity="0.18"/>
+    </pattern>
+    <symbol id="iconHome" viewBox="0 0 24 24"><path d="M3.5 10.6 12 3.8l8.5 6.8v8.8a1.8 1.8 0 0 1-1.8 1.8H5.3a1.8 1.8 0 0 1-1.8-1.8z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M9.1 21.1v-6.4h5.8v6.4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol>
+    <symbol id="iconCompass" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.8" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="m15.8 8.2-2.2 5.4-5.4 2.2 2.2-5.4z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol>
+    <symbol id="iconBookmark" viewBox="0 0 24 24"><path d="M6 4.7A1.7 1.7 0 0 1 7.7 3h8.6A1.7 1.7 0 0 1 18 4.7V21l-6-3.6L6 21z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol>
+    <symbol id="iconMessage" viewBox="0 0 24 24"><path d="M4 5.8A2.8 2.8 0 0 1 6.8 3h10.4A2.8 2.8 0 0 1 20 5.8v7.4a2.8 2.8 0 0 1-2.8 2.8H11l-4.8 4v-4.1a2.8 2.8 0 0 1-2.2-2.7z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M8 8.6h8M8 12h5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+    <symbol id="iconMegaphone" viewBox="0 0 24 24"><path d="M4 11.2a2.2 2.2 0 0 1 2.2-2.2h2.1l9.4-4.2v14.4l-9.4-4.2H6.2A2.2 2.2 0 0 1 4 12.8z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="m8.4 15 1.7 4h2.4l-1.7-4M20.5 9.3a4.4 4.4 0 0 1 0 5.4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+    <symbol id="iconAlert" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.8" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M12 7.5v5.2M12 16.3h.1" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></symbol>
+    <symbol id="iconCalendar" viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="15.5" rx="2.1" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M7.5 3.2v3.6M16.5 3.2v3.6M3.8 9.2h16.4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M8 12.8h.1M12 12.8h.1M16 12.8h.1M8 16.3h.1M12 16.3h.1" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></symbol>
+    <symbol id="iconClipboard" viewBox="0 0 24 24"><rect x="5" y="5" width="14" height="16" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M9 5V3h6v2M8.5 10h7M8.5 14h7M8.5 18h4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+    <symbol id="iconBell" viewBox="0 0 24 24"><path d="M18.5 10.4a6.5 6.5 0 0 0-13 0c0 7.1-2.2 7.1-2.2 8.2h17.4c0-1.1-2.2-1.1-2.2-8.2Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M9.5 21h5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+    <symbol id="iconSearch" viewBox="0 0 24 24"><circle cx="10.8" cy="10.8" r="6.4" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="m16 16 4.7 4.7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+    <symbol id="iconArrow" viewBox="0 0 24 24"><path d="M5 12h13.5M13.2 6.7 18.5 12l-5.3 5.3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="iconUpload" viewBox="0 0 24 24"><path d="M12 16V4M7.5 8.5 12 4l4.5 4.5M5 14.5v4.2A1.3 1.3 0 0 0 6.3 20h11.4a1.3 1.3 0 0 0 1.3-1.3v-4.2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="iconMore" viewBox="0 0 24 24"><circle cx="5.5" cy="12" r="1.4" fill="currentColor"/><circle cx="12" cy="12" r="1.4" fill="currentColor"/><circle cx="18.5" cy="12" r="1.4" fill="currentColor"/></symbol>
+    <symbol id="iconBook" viewBox="0 0 24 24"><path d="M5 4.2A2.2 2.2 0 0 1 7.2 2H19v17H7.2A2.2 2.2 0 0 0 5 21.2z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M5 4.2v17M9 6h6.5M9 9.5h6.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+    <symbol id="iconStar" viewBox="0 0 24 24"><path d="m12 3 2.8 5.7 6.2.9-4.5 4.4 1.1 6.2-5.6-2.9-5.6 2.9 1.1-6.2L3 9.6l6.2-.9z" fill="currentColor"/></symbol>
+    <symbol id="iconSparkle" viewBox="0 0 24 24"><path d="m12 3 1.7 5.3L19 10l-5.3 1.7L12 17l-1.7-5.3L5 10l5.3-1.7z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="m19 16 .8 2.2L22 19l-2.2.8L19 22l-.8-2.2L16 19l2.2-.8z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></symbol>
+  </defs>
+
+  <!-- Canvas -->
+  <rect id="canvas" width="1440" height="1024" fill="#F6F8FC"/>
+
+  <!-- Sidebar -->
+  <g id="sidebar">
+    <rect x="0" y="0" width="252" height="1024" fill="#FFFFFF"/>
+    <rect x="251" y="0" width="1" height="1024" fill="#E9EDF5"/>
+    <g id="brand" transform="translate(34 36)">
+      <rect width="38" height="38" rx="12" fill="url(#heroGradient)"/>
+      <path d="M11 13.5h8.1a5.9 5.9 0 0 1 5.9 5.9v5.1H17a6 6 0 0 1-6-6z" fill="none" stroke="#fff" stroke-width="2" stroke-linejoin="round"/>
+      <path d="M27 24.5h-8.1a5.9 5.9 0 0 1-5.9-5.9v-5.1H21a6 6 0 0 1 6 6z" fill="none" stroke="#BFD3FF" stroke-width="2" stroke-linejoin="round"/>
+      <text x="52" y="25" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="20" font-weight="750" fill="#17223A">NoteBridge</text>
+    </g>
+
+    <text x="34" y="137" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="10" font-weight="750" letter-spacing="1.4" fill="#9AA5B8">WORKSPACE</text>
+    <g id="primaryNav" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="14" font-weight="600">
+      <rect x="18" y="154" width="216" height="46" rx="12" fill="#EAF0FF"/>
+      <use xlink:href="#iconHome" x="34" y="165" width="22" height="22" color="#2F6BFF"/>
+      <text x="70" y="184" fill="#2456D9">Dashboard</text>
+
+      <use xlink:href="#iconCompass" x="34" y="219" width="22" height="22" color="#77849A"/>
+      <text x="70" y="238" fill="#5D6A80">Explore resources</text>
+
+      <use xlink:href="#iconBookmark" x="34" y="273" width="22" height="22" color="#77849A"/>
+      <text x="70" y="292" fill="#5D6A80">My library</text>
+
+      <use xlink:href="#iconMessage" x="34" y="327" width="22" height="22" color="#77849A"/>
+      <text x="70" y="346" fill="#5D6A80">Ask seniors</text>
+      <rect x="184" y="328" width="28" height="20" rx="10" fill="#F0F3F8"/>
+      <text x="198" y="342" text-anchor="middle" font-size="10" fill="#768299">12</text>
+
+      <use xlink:href="#iconCalendar" x="34" y="381" width="22" height="22" color="#77849A"/>
+      <text x="70" y="400" fill="#5D6A80">Timetable</text>
+
+      <use xlink:href="#iconClipboard" x="34" y="435" width="22" height="22" color="#77849A"/>
+      <text x="70" y="454" fill="#5D6A80">Assignments</text>
+
+      <use xlink:href="#iconSparkle" x="34" y="489" width="22" height="22" color="#7656D6"/>
+      <text x="70" y="508" fill="#5D6A80">AI Quiz</text>
+      <rect x="132" y="490" width="42" height="20" rx="10" fill="#F3EAFE"/>
+      <text x="153" y="504" text-anchor="middle" font-size="9" font-weight="750" fill="#7656D6">NEW</text>
+    </g>
+
+    <line x1="34" y1="560" x2="218" y2="560" stroke="#EDF0F5"/>
+    <text x="34" y="595" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="10" font-weight="750" letter-spacing="1.4" fill="#9AA5B8">YOUR PROGRESS</text>
+    <g id="progressCard" transform="translate(30 616)">
+      <rect width="192" height="132" rx="16" fill="#F7F9FD" stroke="#EDF0F5"/>
+      <circle cx="33" cy="35" r="19" fill="#E7EEFF"/>
+      <path d="M27 35.5 31.2 40l8.2-10" fill="none" stroke="#2F6BFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <text x="63" y="30" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="13" font-weight="700" fill="#17223A">Weekly goal</text>
+      <text x="63" y="49" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="11" fill="#7C889D">4 of 6 study sessions</text>
+      <rect x="18" y="76" width="156" height="7" rx="3.5" fill="#E3E8F2"/>
+      <rect x="18" y="76" width="104" height="7" rx="3.5" fill="url(#progressGradient)"/>
+      <text x="18" y="106" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="11" font-weight="700" fill="#2F6BFF">67% complete</text>
+      <text x="174" y="106" text-anchor="end" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="11" fill="#8A95A8">2 left</text>
+    </g>
+
+    <g id="sidebarProfile" transform="translate(30 920)">
+      <circle cx="24" cy="24" r="22" fill="#DDE8FF"/>
+      <text x="24" y="30" text-anchor="middle" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="14" font-weight="750" fill="#315CC6">NS</text>
+      <text x="60" y="20" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="13" font-weight="700" fill="#26334A">Nirjhar Saha</text>
+      <text x="60" y="39" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="11" fill="#8A95A8">CSE · Batch 21</text>
+      <use xlink:href="#iconMore" x="166" y="15" width="20" height="20" color="#8A95A8"/>
+    </g>
+  </g>
+
+  <!-- Main content -->
+  <g id="mainContent" transform="translate(252 0)">
+    <!-- Top bar -->
+    <g id="topBar">
+      <g transform="translate(628 23)">
+        <rect width="254" height="42" rx="12" fill="#FFFFFF" stroke="#E8ECF3"/>
+        <use xlink:href="#iconSearch" x="15" y="10" width="22" height="22" color="#8E9AAD"/>
+        <text x="48" y="26" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="12" fill="#9AA5B8">Search notes, courses, topics...</text>
+        <rect x="212" y="10" width="28" height="22" rx="6" fill="#F3F5F9"/>
+        <text x="226" y="25" text-anchor="middle" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="10" font-weight="700" fill="#9AA5B8">⌘ K</text>
+      </g>
+      <g transform="translate(917 23)">
+        <circle cx="21" cy="21" r="21" fill="#FFFFFF" stroke="#E8ECF3"/>
+        <use xlink:href="#iconBell" x="10" y="10" width="22" height="22" color="#6E7B90"/>
+        <circle cx="34" cy="8" r="5" fill="#FF6B65" stroke="#F6F8FC" stroke-width="2"/>
+      </g>
+      <g transform="translate(978 23)">
+        <circle cx="21" cy="21" r="21" fill="#DDE8FF"/>
+        <text x="21" y="27" text-anchor="middle" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="13" font-weight="750" fill="#315CC6">NS</text>
+      </g>
+      <text x="1012" y="31" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="13" font-weight="700" fill="#26334A">Nirjhar</text>
+      <path d="m1076 29 4 4 4-4" fill="none" stroke="#8A95A8" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+
+    <!-- Greeting / hero -->
+    <g id="hero" display="none" transform="translate(34 92)">
+      <rect width="1090" height="208" rx="22" fill="url(#heroGradient)" filter="url(#shadow)"/>
+      <rect x="620" y="0" width="470" height="208" rx="22" fill="url(#heroGlow)"/>
+      <rect x="0" y="0" width="1090" height="208" rx="22" fill="url(#dotPattern)" opacity="0.32"/>
+      <circle cx="921" cy="58" r="116" fill="none" stroke="#FFFFFF" stroke-opacity="0.1" stroke-width="1.5"/>
+      <circle cx="921" cy="58" r="86" fill="none" stroke="#FFFFFF" stroke-opacity="0.1" stroke-width="1.5"/>
+      <path d="M781 186c40-92 102-143 184-149 52-4 93 10 125 36" fill="none" stroke="#FFFFFF" stroke-opacity="0.13" stroke-width="2"/>
+      <circle cx="903" cy="62" r="9" fill="#FFFFFF" fill-opacity="0.65"/>
+      <circle cx="994" cy="107" r="5" fill="#FFFFFF" fill-opacity="0.4"/>
+      <text x="38" y="60" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="14" font-weight="600" fill="#C9D8FF">GOOD MORNING, NIRJHAR</text>
+      <text x="38" y="103" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="34" font-weight="780" fill="#FFFFFF">Keep your learning in motion.</text>
+      <text x="38" y="135" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="14" fill="#D8E3FF">You have 3 resources to review and a DBMS class at 11:00 AM.</text>
+      <g transform="translate(38 158)">
+        <rect width="154" height="34" rx="10" fill="#FFFFFF"/>
+        <text x="18" y="22" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="12" font-weight="750" fill="#2456D9">Explore resources</text>
+        <use xlink:href="#iconArrow" x="123" y="7" width="20" height="20" color="#2456D9"/>
+      </g>
+      <g transform="translate(836 142)">
+        <rect width="174" height="42" rx="12" fill="#FFFFFF" fill-opacity="0.12" stroke="#FFFFFF" stroke-opacity="0.18"/>
+        <use xlink:href="#iconUpload" x="13" y="10" width="22" height="22" color="#FFFFFF"/>
+        <text x="44" y="26" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="12" font-weight="700" fill="#FFFFFF">Share a resource</text>
+      </g>
+    </g>
+
+    <!-- Clear welcome header replaces the large promotional hero -->
+    <g id="welcomeHeader" font-family="Inter, ui-sans-serif, system-ui, sans-serif">
+      <text x="34" y="122" font-size="25" font-weight="780" fill="#17223A">Welcome back, Nirjhar!</text>
+      <text x="34" y="149" font-size="13" fill="#65738A">Here’s what’s happening with your learning today.</text>
+      <rect x="948" y="100" width="176" height="42" rx="12" fill="#FFFFFF" stroke="#E3E8F1"/>
+      <use xlink:href="#iconCalendar" x="963" y="110" width="21" height="21" color="#2F6BFF"/>
+      <text x="994" y="126" font-size="11" font-weight="700" fill="#26334A">08 April 2026</text>
+    </g>
+
+    <!-- Quick stats -->
+    <g id="quickStats" transform="translate(34 168)">
+      <g filter="url(#smallShadow)">
+        <rect width="250" height="104" rx="16" fill="#FFFFFF"/>
+        <rect x="24" y="25" width="44" height="44" rx="13" fill="#EAF0FF"/>
+        <use xlink:href="#iconBook" x="35" y="36" width="22" height="22" color="#2F6BFF"/>
+        <text x="88" y="43" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="12" fill="#8894A8">Saved resources</text>
+        <text x="88" y="68" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="25" font-weight="780" fill="#17223A">48</text>
+        <text x="126" y="68" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="11" font-weight="650" fill="#2DA878">+8 this month</text>
+      </g>
+      <g transform="translate(266 0)" filter="url(#smallShadow)">
+        <rect width="250" height="104" rx="16" fill="#FFFFFF"/>
+        <rect x="24" y="25" width="44" height="44" rx="13" fill="#E8F8F2"/>
+        <path d="m37 47 7 7 12-14" fill="none" stroke="#2DA878" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <text x="88" y="43" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="12" fill="#8894A8">Study sessions</text>
+        <text x="88" y="68" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="25" font-weight="780" fill="#17223A">24</text>
+        <text x="126" y="68" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="11" font-weight="650" fill="#2DA878">+12% vs last week</text>
+      </g>
+      <g transform="translate(532 0)" filter="url(#smallShadow)">
+        <rect width="250" height="104" rx="16" fill="#FFFFFF"/>
+        <rect x="24" y="25" width="44" height="44" rx="13" fill="#FFF3DD"/>
+        <use xlink:href="#iconStar" x="35" y="36" width="22" height="22" color="#E9A23B"/>
+        <text x="88" y="43" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="12" fill="#8894A8">Contributor points</text>
+        <text x="88" y="68" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="25" font-weight="780" fill="#17223A">860</text>
+        <text x="143" y="68" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="11" font-weight="650" fill="#E09B32">Top 12%</text>
+      </g>
+      <g transform="translate(798 0)" filter="url(#smallShadow)">
+        <rect width="292" height="104" rx="16" fill="#FFFFFF"/>
+        <rect x="24" y="25" width="44" height="44" rx="13" fill="#F3EAFE"/>
+        <use xlink:href="#iconMessage" x="35" y="36" width="22" height="22" color="#9561D9"/>
+        <text x="88" y="43" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="12" fill="#8894A8">Community answers</text>
+        <text x="88" y="68" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="25" font-weight="780" fill="#17223A">17</text>
+        <text x="126" y="68" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="11" font-weight="650" fill="#9561D9">3 new replies</text>
+      </g>
+    </g>
+
+    <!-- Section headings -->
+    <g id="sectionHeadings" display="none" font-family="Inter, ui-sans-serif, system-ui, sans-serif">
+      <text x="34" y="323" font-size="18" font-weight="780" fill="#17223A">Continue learning</text>
+      <text x="366" y="323" font-size="12" font-weight="700" fill="#2F6BFF">View all</text>
+      <use xlink:href="#iconArrow" x="418" y="312" width="20" height="20" color="#2F6BFF"/>
+      <text x="34" y="566" font-size="18" font-weight="780" fill="#17223A">Today’s timetable</text>
+      <text x="366" y="566" font-size="12" font-weight="700" fill="#2F6BFF">Full timetable</text>
+      <use xlink:href="#iconArrow" x="448" y="555" width="20" height="20" color="#2F6BFF"/>
+      <text x="574" y="323" font-size="18" font-weight="780" fill="#17223A">Recommended for you</text>
+      <text x="1034" y="323" font-size="12" font-weight="700" fill="#2F6BFF">See more</text>
+      <use xlink:href="#iconArrow" x="1081" y="312" width="20" height="20" color="#2F6BFF"/>
+    </g>
+
+    <!-- Continue learning card -->
+    <g id="continueCard" display="none" transform="translate(34 345)" filter="url(#smallShadow)">
+      <rect width="500" height="194" rx="18" fill="#FFFFFF"/>
+      <rect x="22" y="22" width="84" height="84" rx="15" fill="#EAF0FF"/>
+      <path d="M44 43h39v35H44z" fill="none" stroke="#2F6BFF" stroke-width="2" stroke-linejoin="round"/>
+      <path d="m44 51 19.5 13L83 51M54 88h19" fill="none" stroke="#2F6BFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      <text x="128" y="42" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="10" font-weight="750" letter-spacing="1.1" fill="#2F6BFF">LAST OPENED · 12 MIN AGO</text>
+      <text x="128" y="69" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="16" font-weight="750" fill="#17223A">Data Structures — Complete Notes</text>
+      <text x="128" y="93" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="12" fill="#8390A5">Trees · Semester 3 · 42 pages</text>
+      <rect x="22" y="136" width="456" height="8" rx="4" fill="#E8EDF5"/>
+      <rect x="22" y="136" width="276" height="8" rx="4" fill="url(#progressGradient)"/>
+      <text x="22" y="168" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="11" font-weight="700" fill="#617087">61% completed</text>
+      <g transform="translate(379 151)">
+        <rect width="99" height="30" rx="9" fill="#EAF0FF"/>
+        <text x="50" y="20" text-anchor="middle" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="11" font-weight="750" fill="#2456D9">Resume</text>
+      </g>
+    </g>
+
+    <!-- Timetable -->
+    <g id="timetable" display="none" transform="translate(34 589)" filter="url(#smallShadow)">
+      <rect width="500" height="240" rx="18" fill="#FFFFFF"/>
+      <g font-family="Inter, ui-sans-serif, system-ui, sans-serif">
+        <text x="24" y="34" font-size="11" font-weight="750" letter-spacing="1" fill="#9AA5B8">WEDNESDAY · 08 APR</text>
+        <line x1="24" y1="53" x2="476" y2="53" stroke="#EDF0F5"/>
+        <rect x="24" y="70" width="4" height="48" rx="2" fill="#2F6BFF"/>
+        <text x="42" y="83" font-size="12" font-weight="750" fill="#17223A">09:00 AM</text>
+        <text x="42" y="103" font-size="13" font-weight="700" fill="#3E4B62">Database Management Systems</text>
+        <text x="42" y="120" font-size="11" fill="#8793A7">Room 401 · Dr. Rahman</text>
+        <rect x="402" y="78" width="60" height="26" rx="8" fill="#EAF0FF"/>
+        <text x="432" y="95" text-anchor="middle" font-size="10" font-weight="750" fill="#2F6BFF">In 20m</text>
+
+        <line x1="24" y1="135" x2="476" y2="135" stroke="#F0F2F6"/>
+        <rect x="24" y="151" width="4" height="48" rx="2" fill="#F2B54B"/>
+        <text x="42" y="164" font-size="12" font-weight="750" fill="#17223A">11:00 AM</text>
+        <text x="42" y="184" font-size="13" font-weight="700" fill="#3E4B62">Object Oriented Programming</text>
+        <text x="42" y="201" font-size="11" fill="#8793A7">Lab 302 · Practical session</text>
+        <rect x="402" y="159" width="60" height="26" rx="8" fill="#FFF3DD"/>
+        <text x="432" y="176" text-anchor="middle" font-size="10" font-weight="750" fill="#D28A19">Upcoming</text>
+      </g>
+    </g>
+
+    <!-- Recommended resource cards -->
+    <g id="recommended" display="none" transform="translate(574 345)">
+      <g filter="url(#smallShadow)">
+        <rect width="516" height="112" rx="16" fill="#FFFFFF"/>
+        <rect x="20" y="20" width="72" height="72" rx="14" fill="#FFF0ED"/>
+        <text x="56" y="63" text-anchor="middle" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="23" font-weight="800" fill="#E46B5D">PDF</text>
+        <text x="112" y="40" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="13" font-weight="750" fill="#17223A">Binary Trees — Exam Guide</text>
+        <text x="112" y="62" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="11" fill="#8390A5">CSE 2201 · Study guide · 28 pages</text>
+        <use xlink:href="#iconStar" x="112" y="76" width="15" height="15" color="#E9A23B"/>
+        <text x="132" y="89" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="11" font-weight="700" fill="#65738A">4.9</text>
+        <text x="166" y="89" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="11" fill="#A0A9B7">· 1.2k views</text>
+        <use xlink:href="#iconBookmark" x="464" y="42" width="22" height="22" color="#2F6BFF"/>
+      </g>
+      <g transform="translate(0 128)" filter="url(#smallShadow)">
+        <rect width="516" height="112" rx="16" fill="#FFFFFF"/>
+        <rect x="20" y="20" width="72" height="72" rx="14" fill="#EAF8F3"/>
+        <text x="56" y="63" text-anchor="middle" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="23" font-weight="800" fill="#2DA878">PPT</text>
+        <text x="112" y="40" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="13" font-weight="750" fill="#17223A">Graph Algorithms — Lecture Slides</text>
+        <text x="112" y="62" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="11" fill="#8390A5">CSE 2201 · Slides · 46 pages</text>
+        <use xlink:href="#iconStar" x="112" y="76" width="15" height="15" color="#E9A23B"/>
+        <text x="132" y="89" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="11" font-weight="700" fill="#65738A">4.7</text>
+        <text x="166" y="89" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="11" fill="#A0A9B7">· 864 views</text>
+        <use xlink:href="#iconBookmark" x="464" y="42" width="22" height="22" color="#B9C2D0"/>
+      </g>
+      <g transform="translate(0 256)" filter="url(#smallShadow)">
+        <rect width="516" height="112" rx="16" fill="#FFFFFF"/>
+        <rect x="20" y="20" width="72" height="72" rx="14" fill="#F3EAFE"/>
+        <text x="56" y="63" text-anchor="middle" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="23" font-weight="800" fill="#9561D9">DOC</text>
+        <text x="112" y="40" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="13" font-weight="750" fill="#17223A">Sorting Lab — Solved Examples</text>
+        <text x="112" y="62" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="11" fill="#8390A5">CSE 2201 · Lab material · 18 pages</text>
+        <use xlink:href="#iconStar" x="112" y="76" width="15" height="15" color="#E9A23B"/>
+        <text x="132" y="89" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="11" font-weight="700" fill="#65738A">4.8</text>
+        <text x="166" y="89" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="11" fill="#A0A9B7">· 596 views</text>
+        <use xlink:href="#iconBookmark" x="464" y="42" width="22" height="22" color="#B9C2D0"/>
+      </g>
+    </g>
+    <!-- Reference-aligned student dashboard: timetable and announcements replace learning-progress cards. -->
+    <g id="referenceStudentLower">
+      <rect x="0" y="300" width="1140" height="724" fill="#F6F8FC"/>
+
+      <!-- Today's timetable -->
+      <g font-family="Inter, ui-sans-serif, system-ui, sans-serif">
+        <text x="34" y="332" font-size="18" font-weight="780" fill="#17223A">Today's timetable</text>
+        <text x="678" y="332" font-size="11" font-weight="750" fill="#2F6BFF">View full timetable</text>
+        <use xlink:href="#iconArrow" x="730" y="322" width="18" height="18" color="#2F6BFF"/>
+        <g transform="translate(34 350)" filter="url(#smallShadow)">
+          <rect width="730" height="330" rx="16" fill="#FFFFFF"/>
+          <line x1="0" y1="51" x2="730" y2="51" stroke="#EDF0F5"/>
+          <path d="M133 76v228" stroke="#D9E0EC" stroke-width="1.5"/>
+          <g font-family="Inter, ui-sans-serif, system-ui, sans-serif">
+            <text x="22" y="78" font-size="12" font-weight="750" fill="#17223A">09:00 AM</text><text x="22" y="98" font-size="10" fill="#8A95A8">10:00 AM</text><circle cx="133" cy="81" r="7" fill="#7656D6" stroke="#fff" stroke-width="3"/><text x="154" y="78" font-size="12" font-weight="750" fill="#26334A">Database Management Systems</text><text x="154" y="97" font-size="10" fill="#718097">Lecture · Room 401 · Dr. Rahman</text><rect x="638" y="70" width="70" height="24" rx="8" fill="#E8F8F2"/><text x="673" y="86" text-anchor="middle" font-size="10" font-weight="750" fill="#208A60">Starts in 15m</text>
+            <line x1="22" y1="117" x2="708" y2="117" stroke="#F1F3F7"/>
+            <text x="22" y="145" font-size="12" font-weight="750" fill="#17223A">11:00 AM</text><text x="22" y="165" font-size="10" fill="#8A95A8">12:00 PM</text><circle cx="133" cy="148" r="7" fill="#F2B54B" stroke="#fff" stroke-width="3"/><text x="154" y="145" font-size="12" font-weight="750" fill="#26334A">Object Oriented Programming Lab</text><text x="154" y="164" font-size="10" fill="#718097">Lab · Lab 302 · Farhana Ma’am</text><rect x="638" y="137" width="70" height="24" rx="8" fill="#FFF3DD"/><text x="673" y="153" text-anchor="middle" font-size="10" font-weight="750" fill="#C48319">In 2h 15m</text>
+            <line x1="22" y1="184" x2="708" y2="184" stroke="#F1F3F7"/>
+            <text x="22" y="212" font-size="12" font-weight="750" fill="#17223A">02:00 PM</text><text x="22" y="232" font-size="10" fill="#8A95A8">03:00 PM</text><circle cx="133" cy="215" r="7" fill="#2F6BFF" stroke="#fff" stroke-width="3"/><text x="154" y="212" font-size="12" font-weight="750" fill="#26334A">Discrete Mathematics</text><text x="154" y="231" font-size="10" fill="#718097">Lecture · Room 205 · Dr. Alam</text><rect x="638" y="204" width="70" height="24" rx="8" fill="#EAF0FF"/><text x="673" y="220" text-anchor="middle" font-size="10" font-weight="750" fill="#315CC6">In 5h 15m</text>
+            <line x1="22" y1="251" x2="708" y2="251" stroke="#F1F3F7"/>
+            <text x="22" y="279" font-size="12" font-weight="750" fill="#17223A">03:30 PM</text><text x="22" y="299" font-size="10" fill="#8A95A8">04:30 PM</text><circle cx="133" cy="282" r="7" fill="#E95791" stroke="#fff" stroke-width="3"/><text x="154" y="279" font-size="12" font-weight="750" fill="#26334A">Data Structures</text><text x="154" y="298" font-size="10" fill="#718097">Lecture · Room 401 · Dr. Rahman</text><rect x="638" y="271" width="70" height="24" rx="8" fill="#F3EAFE"/><text x="673" y="287" text-anchor="middle" font-size="10" font-weight="750" fill="#7656D6">In 6h 45m</text>
+          </g>
+        </g>
+      </g>
+
+      <!-- Recent announcements -->
+      <g font-family="Inter, ui-sans-serif, system-ui, sans-serif">
+        <text x="790" y="332" font-size="18" font-weight="780" fill="#17223A">Recent announcements</text>
+        <text x="1060" y="332" font-size="11" font-weight="750" fill="#2F6BFF">View all</text>
+        <use xlink:href="#iconArrow" x="1100" y="322" width="18" height="18" color="#2F6BFF"/>
+        <g transform="translate(790 350)" filter="url(#smallShadow)">
+          <rect width="344" height="330" rx="16" fill="#FFFFFF"/>
+          <line x1="0" y1="51" x2="344" y2="51" stroke="#EDF0F5"/>
+          <g transform="translate(18 72)"><rect width="42" height="42" rx="11" fill="#F3EAFE"/><use xlink:href="#iconMegaphone" x="10" y="10" width="22" height="22" color="#7656D6"/><text x="58" y="14" font-size="11" font-weight="750" fill="#26334A">DBMS Assignment 2 is now available</text><text x="58" y="33" font-size="10" fill="#718097">Dr. Rahman · 2 hours ago</text><rect x="270" y="6" width="45" height="22" rx="8" fill="#F3EAFE"/><text x="292" y="21" text-anchor="middle" font-size="10" font-weight="750" fill="#7656D6">New</text></g>
+          <line x1="18" y1="142" x2="326" y2="142" stroke="#F1F3F7"/>
+          <g transform="translate(18 163)"><rect width="42" height="42" rx="11" fill="#E8F8F2"/><use xlink:href="#iconCalendar" x="10" y="10" width="22" height="22" color="#208A60"/><text x="58" y="14" font-size="11" font-weight="750" fill="#26334A">OOP Lab will be held in Lab 302</text><text x="58" y="33" font-size="10" fill="#718097">Farhana Ma’am · 4 hours ago</text></g>
+          <line x1="18" y1="233" x2="326" y2="233" stroke="#F1F3F7"/>
+          <g transform="translate(18 254)"><rect width="42" height="42" rx="11" fill="#FFF3DD"/><use xlink:href="#iconAlert" x="10" y="10" width="22" height="22" color="#D97715"/><text x="58" y="14" font-size="11" font-weight="750" fill="#26334A">Mid-term exam routine published</text><text x="58" y="33" font-size="10" fill="#718097">Admin · Yesterday</text></g>
+        </g>
+      </g>
+
+      <!-- Resource activity and quick access -->
+      <g font-family="Inter, ui-sans-serif, system-ui, sans-serif">
+        <text x="34" y="722" font-size="18" font-weight="780" fill="#17223A">Recent activity</text>
+        <text x="682" y="722" font-size="11" font-weight="750" fill="#2F6BFF">View all activity</text>
+        <use xlink:href="#iconArrow" x="730" y="712" width="18" height="18" color="#2F6BFF"/>
+        <g transform="translate(34 740)" filter="url(#smallShadow)"><rect width="730" height="200" rx="16" fill="#FFFFFF"/>
+          <g transform="translate(20 22)"><circle cx="18" cy="18" r="17" fill="#E8F8F2"/><use xlink:href="#iconUpload" x="9" y="9" width="18" height="18" color="#208A60"/><text x="50" y="14" font-size="11" fill="#26334A">You uploaded “Binary Trees Notes.pdf” in Data Structures</text><text x="660" y="14" text-anchor="end" font-size="10" fill="#8A95A8">2 hours ago</text></g>
+          <line x1="20" y1="63" x2="710" y2="63" stroke="#F1F3F7"/>
+          <g transform="translate(20 82)"><circle cx="18" cy="18" r="17" fill="#EAF0FF"/><use xlink:href="#iconBook" x="9" y="9" width="18" height="18" color="#315CC6"/><text x="50" y="14" font-size="11" fill="#26334A">You downloaded “DBMS Previous Questions 2024.pdf”</text><text x="660" y="14" text-anchor="end" font-size="10" fill="#8A95A8">4 hours ago</text></g>
+          <line x1="20" y1="123" x2="710" y2="123" stroke="#F1F3F7"/>
+          <g transform="translate(20 142)"><circle cx="18" cy="18" r="17" fill="#FFF3DD"/><use xlink:href="#iconMessage" x="9" y="9" width="18" height="18" color="#D97715"/><text x="50" y="14" font-size="11" fill="#26334A">Your answer received 5 upvotes in “How to prepare for DSA final exam?”</text><text x="660" y="14" text-anchor="end" font-size="10" fill="#8A95A8">Yesterday</text></g>
+        </g>
+      </g>
+
+      <g font-family="Inter, ui-sans-serif, system-ui, sans-serif">
+        <text x="790" y="722" font-size="18" font-weight="780" fill="#17223A">Quick access</text>
+        <g transform="translate(790 740)" filter="url(#smallShadow)"><rect width="344" height="200" rx="16" fill="#FFFFFF"/>
+          <g transform="translate(16 18)"><rect width="96" height="66" rx="11" fill="#FFFFFF" stroke="#E2E7F0"/><use xlink:href="#iconUpload" x="38" y="8" width="20" height="20" color="#7656D6"/><text x="48" y="49" text-anchor="middle" font-size="9" font-weight="700" fill="#26334A">Upload resource</text></g>
+          <g transform="translate(124 18)"><rect width="96" height="66" rx="11" fill="#FFFFFF" stroke="#E2E7F0"/><use xlink:href="#iconMessage" x="38" y="8" width="20" height="20" color="#2F6BFF"/><text x="48" y="49" text-anchor="middle" font-size="9" font-weight="700" fill="#26334A">Ask question</text></g>
+          <g transform="translate(232 18)"><rect width="96" height="66" rx="11" fill="#FFFFFF" stroke="#E2E7F0"/><use xlink:href="#iconBookmark" x="38" y="8" width="20" height="20" color="#E9A23B"/><text x="48" y="49" text-anchor="middle" font-size="9" font-weight="700" fill="#26334A">My bookmarks</text></g>
+          <g transform="translate(16 102)"><rect width="96" height="66" rx="11" fill="#FFFFFF" stroke="#E2E7F0"/><use xlink:href="#iconClipboard" x="38" y="8" width="20" height="20" color="#D97715"/><text x="48" y="49" text-anchor="middle" font-size="9" font-weight="700" fill="#26334A">Previous papers</text></g>
+          <g transform="translate(124 102)"><rect width="96" height="66" rx="11" fill="#FFFFFF" stroke="#E2E7F0"/><use xlink:href="#iconBook" x="38" y="8" width="20" height="20" color="#208A60"/><text x="48" y="49" text-anchor="middle" font-size="9" font-weight="700" fill="#26334A">My library</text></g>
+          <g transform="translate(232 102)"><rect width="96" height="66" rx="11" fill="#FFFFFF" stroke="#E2E7F0"/><use xlink:href="#iconStar" x="38" y="8" width="20" height="20" color="#7656D6"/><text x="48" y="49" text-anchor="middle" font-size="9" font-weight="700" fill="#26334A">Achievements</text></g>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>
