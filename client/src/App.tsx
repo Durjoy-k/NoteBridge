@@ -40,8 +40,12 @@ const navItems: { label: string; icon: LucideIcon; badge?: string; count?: strin
   { label: 'Previous questions', icon: FileText },
 ];
 
+function NoteBridgeMark({ size = 21 }: { size?: number }) {
+  return <svg className="notebridge-mark" width={size} height={size} viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 5.5h5.1c2.1 0 4.1.8 5.4 2.2v11.1c-1.3-1.4-3.3-2.2-5.4-2.2H3.5V5.5Z" fill="currentColor" /><path d="M20.5 5.5h-5.1c-2.1 0-4.1.8-5.4 2.2v11.1c1.3-1.4 3.3-2.2 5.4-2.2h5.1V5.5Z" fill="currentColor" /><path d="M12 7.7v11.1" stroke="#7656D6" strokeWidth="1.5" strokeLinecap="round" /></svg>;
+}
+
 function Logo() {
-  return <a className="brand" href="/" onClick={(event) => { event.preventDefault(); window.history.pushState({}, '', '/'); window.dispatchEvent(new PopStateEvent('popstate')); }}><span className="brand-mark"><BookOpen size={21} /></span><span>NoteBridge</span></a>;
+  return <a className="brand" href="/" onClick={(event) => { event.preventDefault(); window.history.pushState({}, '', '/'); window.dispatchEvent(new PopStateEvent('popstate')); }}><span className="brand-mark"><NoteBridgeMark /></span><span>NoteBridge</span></a>;
 }
 
 function App() {
@@ -86,6 +90,9 @@ function AuthPage({ mode, onLogin, go }: { mode: 'login' | 'register'; onLogin: 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [name, setName] = useState('');
+  const [verificationEmail, setVerificationEmail] = useState('');
+  const [verificationCode, setVerificationCode] = useState('');
+  const [devCode, setDevCode] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
 
@@ -95,22 +102,51 @@ function AuthPage({ mode, onLogin, go }: { mode: 'login' | 'register'; onLogin: 
       const response = await fetch(`${API_URL}/api/auth/${mode}`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ email, password, name }) });
       const data = await response.json();
       if (!response.ok) throw new Error(data.message ?? 'Unable to sign in');
+      if (data.requiresVerification) {
+        setVerificationEmail(data.email ?? email.trim().toLowerCase());
+        setDevCode(data.verificationCode ?? '');
+        return;
+      }
       onLogin(data.user);
     } catch (caught) {
       setError(caught instanceof Error ? caught.message : 'Unable to sign in');
     } finally { setLoading(false); }
   };
 
+  const verifyEmail = async (event: FormEvent) => {
+    event.preventDefault(); setError(''); setLoading(true);
+    try {
+      const response = await fetch(`${API_URL}/api/auth/verify-email`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ email: verificationEmail, code: verificationCode }) });
+      const data = await response.json();
+      if (!response.ok) throw new Error(data.message ?? 'Unable to verify email');
+      onLogin(data.user);
+    } catch (caught) {
+      setError(caught instanceof Error ? caught.message : 'Unable to verify email');
+    } finally { setLoading(false); }
+  };
+
+  const resendVerification = async () => {
+    setError(''); setLoading(true);
+    try {
+      const response = await fetch(`${API_URL}/api/auth/resend-verification`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ email: verificationEmail }) });
+      const data = await response.json();
+      if (!response.ok) throw new Error(data.message ?? 'Unable to resend code');
+      setDevCode(data.verificationCode ?? '');
+    } catch (caught) {
+      setError(caught instanceof Error ? caught.message : 'Unable to resend code');
+    } finally { setLoading(false); }
+  };
+
   return <main className="auth-shell">
     <section className="auth-story"><Logo /><div className="story-copy"><span className="eyebrow"><Sparkles size={15} /> Student-powered knowledge</span><h1>Study better together.<br /><span>Share what works.</span></h1><p>Keep useful notes, answers, and AI study help in one trusted university space.</p><div className="story-points"><span><Check size={16} /> University-verified community</span><span><Check size={16} /> Resources shared by students</span><span><Check size={16} /> AI summaries and quizzes</span></div></div><p className="story-footer">Give the next student a better starting point.</p></section>
-    <section className="auth-panel"><div className="auth-topline">{mode === 'login' ? <>New to NoteBridge? <button onClick={() => go('/register')}>Create an account</button></> : <>Already have an account? <button onClick={() => go('/login')}>Sign in</button></>}</div><div className="auth-card"><div className="auth-heading"><div className="auth-icon"><BookOpen size={24} /></div><h2>{mode === 'login' ? 'Welcome back' : 'Join NoteBridge'}</h2><p>{mode === 'login' ? 'Sign in to continue to your student space.' : 'Create your verified student account.'}</p></div><form onSubmit={submit} className="auth-form">
+    <section className="auth-panel"><div className="auth-topline">{mode === 'login' ? <>New to NoteBridge? <button onClick={() => go('/register')}>Create an account</button></> : <>Already have an account? <button onClick={() => go('/login')}>Sign in</button></>}</div><div className="auth-card">{verificationEmail ? <><div className="auth-heading"><div className="auth-icon"><Check size={24} /></div><h2>Check your university email</h2><p>We sent a six-digit code to <strong>{verificationEmail}</strong>.</p></div>{devCode && <div className="dev-code">Local development code: <strong>{devCode}</strong></div>}<form onSubmit={verifyEmail} className="auth-form"><label>Verification code<input value={verificationCode} onChange={(event) => setVerificationCode(event.target.value.replace(/\D/g, '').slice(0, 6))} inputMode="numeric" autoComplete="one-time-code" placeholder="Enter 6-digit code" minLength={6} maxLength={6} required /></label>{error && <div className="error-message">{error}</div>}<button className="primary-button" disabled={loading}>{loading ? 'Checking…' : 'Verify email'} <ArrowRight size={17} /></button></form><button type="button" className="text-button auth-resend" onClick={resendVerification} disabled={loading}>Resend code</button><button type="button" className="text-button auth-change-email" onClick={() => { setVerificationEmail(''); setVerificationCode(''); setDevCode(''); setError(''); }}>Use a different email</button></> : <><div className="auth-heading"><div className="auth-icon"><BookOpen size={24} /></div><h2>{mode === 'login' ? 'Welcome back' : 'Join NoteBridge'}</h2><p>{mode === 'login' ? 'Sign in to continue to your student space.' : 'Create your verified student account.'}</p></div><form onSubmit={submit} className="auth-form">
       {mode === 'register' && <label>Name<input value={name} onChange={(event) => setName(event.target.value)} placeholder="Your full name" required /></label>}
       <label>University email<div className="input-wrap"><span>@</span><input type="email" value={email} onChange={(event) => setEmail(event.target.value)} placeholder="you@university.edu" required /></div></label>
       <label>Password<div className="input-wrap"><span>••</span><input type="password" value={password} onChange={(event) => setPassword(event.target.value)} placeholder="Enter your password" minLength={8} required /></div></label>
       {mode === 'login' && <div className="form-options"><label className="check-label"><input type="checkbox" /> Remember me</label><button type="button" className="text-button">Forgot password?</button></div>}
       {error && <div className="error-message">{error}</div>}
       <button className="primary-button" disabled={loading}>{loading ? 'Please wait…' : mode === 'login' ? 'Sign in' : 'Create account'} <ArrowRight size={17} /></button>
-    </form><div className="auth-divider"><span>or</span></div><button className="verify-button"><Users size={17} /> Continue with university verification</button><p className="auth-note">Only verified university students can join NoteBridge.</p></div><p className="auth-legal">Your university email keeps the community trusted.<br />Privacy · Help · Terms</p></section>
+    </form><div className="auth-divider"><span>or</span></div><button className="verify-button"><Users size={17} /> Continue with university verification</button><p className="auth-note">Use your university email. We’ll send a code before activating your account.</p></>}</div><p className="auth-legal">Your university email keeps the community trusted.<br />Privacy · Help · Terms</p></section>
   </main>;
 }
 

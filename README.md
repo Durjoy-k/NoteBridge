@@ -9,6 +9,8 @@ Student-driven university resource sharing platform.
 - Express + TypeScript API
 - PostgreSQL-ready authentication
 - JWT + bcrypt password authentication
+- University-domain email gate for registration and login
+- One-time email verification code before account activation
 
 ## Run locally
 
@@ -35,3 +37,17 @@ The development API includes a safe demo account when `DATABASE_URL` is not conf
 - Password: `NoteBridge123!`
 
 The demo fallback is only for local development. For a real environment, configure `DATABASE_URL`, apply `server/schema.sql`, and set a strong `JWT_SECRET`.
+
+### University authentication
+
+The API enforces university email addresses for both registration and login. For a real deployment, set `UNIVERSITY_EMAIL_DOMAINS` in `.env` to an explicit comma-separated allowlist, for example:
+
+```env
+UNIVERSITY_EMAIL_DOMAINS=youruniversity.edu,students.youruniversity.edu
+```
+
+The current local fallback accepts common academic endings such as `.edu`, `.ac.uk`, `.ac.bd`, and `.edu.bd`. This domain gate does not yet prove mailbox ownership; production email verification codes or links should be added before launch.
+
+### Email ownership verification
+
+Registration now creates a pending account and sends a one-time six-digit verification code. In local development without `RESEND_API_KEY`, the API prints the code in the server terminal and includes it in the development response so the flow can be tested. For real email delivery, configure `RESEND_API_KEY` and a verified `EMAIL_FROM` address. If the database already existed before this feature, apply the new columns in `server/schema.sql` before starting registration.
